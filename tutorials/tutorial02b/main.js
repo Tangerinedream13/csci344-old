@@ -10,6 +10,7 @@ function setup() {
     draw5CirclesWhile();
     draw5CirclesFor(); 
     drawNCircles(20); 
+    drawNShapesFlexible (30, 25, 400, 0); 
     drawNShapesFlexible(10, 40, 400, 100, "circle"); // Example call for circles
     drawNShapesFlexible(5, 50, 500, 100, "square");  // Example call for squares
     draw5RedSquares();
@@ -54,7 +55,31 @@ function drawNCircles(n) {
 }
 
 // my fourth function for flexible shape drawing
+function drawNShapesFlexible(n, size, x, y) {
+    for (let i = 0; i < n; i++) {
+        if (shape === "circle") {
+            circle(x, y, size);
+        } else {
+            square(x, y, size);
+        }
+        y += size; // Move the y-position down by the size of the shape
+    }
+}
+
+// my fifth function for even more flexibility 
 function drawNShapesFlexible(n, size, x, y, shape) {
+    for (let i = 0; i < n; i++) {
+        if (shape === "circle") {
+            circle(x, y, size);
+        } else {
+            square(x, y, size);
+        }
+        y += size; // Move the y-position down by the size of the shape
+    }
+}
+
+// my sixth function for even more flexibiliy 
+function drawNShapesFlexible(n, size, x, y, shape, direction) {
     for (let i = 0; i < n; i++) {
         if (shape === "circle") {
             circle(x, y, size);
