@@ -9,6 +9,7 @@ function setup() {
     // functions should all go between "createCanvas()" and "drawGrid()"
     draw5CirclesWhile();
     draw5CirclesFor(); 
+    drawNCircles(n) 
     draw5RedSquares();
     drawGrid(canvasWidth, canvasHeight);
 }
@@ -37,6 +38,20 @@ function draw5CirclesFor() {
         y += 50; // Move the y-position down for the next circle
     }
 }
+
+//my third function using a for loop n times
+function drawNCircles(n) {
+    console.log(`Draw ${n} Circles using for loop!`); 
+    let x = 300; // Different starting x-position to avoid overlap
+    let y = 100; // Different starting y-position
+
+    for (let i = 0; i < n; i++) {
+        circle(x, y, 50);
+        y += 50; // Move the y-position down for the next circle
+    }
+}
+
+
 
 function draw5RedSquares() {
     fill("red");
