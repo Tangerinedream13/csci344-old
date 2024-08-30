@@ -42,8 +42,8 @@ function draw5CirclesFor() {
 //my third function using a for loop n times
 function drawNCircles(n) {
     console.log(`Draw ${n} Circles using for loop!`); 
-    let x = 300; // Different starting x-position to avoid overlap
-    let y = 100; // Different starting y-position
+    let x = 300; 
+    let y = 100;
 
     for (let i = 0; i < n; i++) {
         circle(x, y, 50);
