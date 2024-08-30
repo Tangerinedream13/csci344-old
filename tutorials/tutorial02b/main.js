@@ -7,21 +7,26 @@ function setup() {
 
     // invoke any drawing functions inside of setup.
     // functions should all go between "createCanvas()" and "drawGrid()"
-    draw5Circles();
-    // draw5RedSquares();
+    draw5CirclesWhile();
+    draw5RedSquares();
     drawGrid(canvasWidth, canvasHeight);
 }
 
 // my first function
-function draw5Circles() {
+function draw5CirclesWhile() {
     noFill();
     // fill('red');
-    circle(100, 200, 50); // centerX, centerY, radius
-    circle(100, 250, 50);
-    circle(100, 300, 50);
-    circle(100, 350, 50);
-    circle(100, 400, 50);
+    let x = 150;
+    let y = 100; 
+    let count = 0; 
+
+    while (count < 5) {
+        circle(x, y, 50);
+        y += 50; // Move the y-position down for the next circle
+        count++; // Increment the counter
+    }
 }
+
 
 function draw5RedSquares() {
     fill("red");
