@@ -10,11 +10,13 @@ function setup() {
     draw5CirclesWhile();
     draw5CirclesFor(); 
     drawNCircles(20); 
-    drawNShapesFlexible (30, 25, 400, 0); 
-    drawNShapesFlexible(10, 40, 400, 100, "circle"); // Example call for circles
-    drawNShapesFlexible(5, 50, 500, 100, "square");  // Example call for squares
+    drawNShapesFlexible (30, 25, 400, 0, "circle"); 
+    drawNShapesFlexible(10, 40, 400, 100, "circle"); // Circles
+    drawNShapesFlexible(5, 50, 500, 100, "square");  // Squares
+    drawNShapesFlexible(10,30, 300, 300, "circle", "row"); //A row of circles
     draw5RedSquares();
     drawGrid(canvasWidth, canvasHeight);
+    drawCar(); 
 }
 
 // my first function
@@ -98,3 +100,23 @@ function draw5RedSquares() {
     square(320, 350, 50);
     square(320, 400, 50);
 }
+
+//optional make a drawing of a car
+
+function drawCar() {
+    //Car body
+    fill ("blue"); 
+    rect (300, 300, 200, 100);
+    //Car wheels
+    fill(0); //Black wheels
+    circle(350, 400, 50); 
+    circle(450, 400, 50); 
+}
+
+function draw() {
+
+}
+
+
+
+
