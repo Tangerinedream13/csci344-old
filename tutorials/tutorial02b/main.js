@@ -16,7 +16,10 @@ function setup() {
     drawNShapesFlexible(10,30, 300, 300, "circle", "row"); //A row of circles
     draw5RedSquares();
     drawGrid(canvasWidth, canvasHeight);
-    drawCar(); 
+    
+    for (let i = 0; i < 10; i++) {
+        drawCar (); 
+    }
 }
 
 // my first function
@@ -103,20 +106,28 @@ function draw5RedSquares() {
 
 //optional make a drawing of a car
 function drawCar() {
-    let carX = 600; 
-    //Car body
-    fill ("blue"); 
-    rect (carX, 300, 200, 100);
-    //Car wheels
-    fill(0); //Black wheels
-    circle(carX + 50, 400, 50); 
-    circle(carX + 150, 400, 50); 
+    let x = Math.random() * (canvasWidth - 200);
+    let y = Math.random() * (canvasHeight - 100);
+
+    let sizeFactor = Math.random() * 0.5 + 0.5; // Scale between 0.5 and 1.0
+
+    // Random color for the car body
+    fill(Math.random() * 255, Math.random() * 255, Math.random() * 255);
+    rect(x, y, 200 * sizeFactor, 50 * sizeFactor);
+
+    // Car top part
+    rect(x + 50 * sizeFactor, y - 30 * sizeFactor, 100 * sizeFactor, 30 * sizeFactor);
+
+    // Random color for the wheels
+    fill(Math.random() * 255, Math.random() * 255, Math.random() * 255);
+    let wheelSize = 50 * sizeFactor;
+    circle(x + 50 * sizeFactor, y + 50 * sizeFactor, wheelSize);
+    circle(x + 150 * sizeFactor, y + 50 * sizeFactor, wheelSize);
 }
 
 function draw() {
 
 }
-
 
 
 
