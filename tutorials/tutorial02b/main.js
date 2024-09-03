@@ -88,13 +88,13 @@ function drawNShapesFlexible(n, size, x, y, shape, direction) {
         } else {
             square(x, y, size);
         }
-        y += size; // Move the y-position down by the size of the shape
+        y += size; 
     }
 }
 
 function draw5RedSquares() {
     fill("red");
-    square(320, 200, 50); // topLeftX, topLeftY, width
+    square(320, 200, 50); 
     square(320, 250, 50);
     square(320, 300, 50);
     square(320, 350, 50);
@@ -102,15 +102,15 @@ function draw5RedSquares() {
 }
 
 //optional make a drawing of a car
-
 function drawCar() {
+    let carX = 600; 
     //Car body
     fill ("blue"); 
-    rect (300, 300, 200, 100);
+    rect (carX, 300, 200, 100);
     //Car wheels
     fill(0); //Black wheels
-    circle(350, 400, 50); 
-    circle(450, 400, 50); 
+    circle(carX + 50, 400, 50); 
+    circle(carX + 150, 400, 50); 
 }
 
 function draw() {
