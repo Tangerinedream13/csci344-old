@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 html {
     scroll-behavior: smooth;
 }
@@ -11,4 +13,7 @@ body {
     margin: 0;
 }
 
+h1, h2 {
+    font-family: 'Montserrat', sans-serif; 
+}
 /* create additional rules below:  */
