@@ -8,6 +8,19 @@ const people = [
     { name: "Malik", pic: "http://knight.gamebanana.com/img/ico/sprays/patrick_star_preview_2.png", score: 40 }
 ];
 
+
+for(const person of people) {
+    console.log(person); 
+    const snippet =`
+        <div class="card">
+        <img src="http://knight.gamebanana.com/img/ico/sprays/patrick_star_preview_2.png">
+        <p>Jane's high score is: 300</p>
+        </div>
+    `;
+
+    document.querySelector('.cards').innerHTML += snippet; 
+}
+
 /**
  * Your job:
  * Loop through the people array and create a card for all of the
