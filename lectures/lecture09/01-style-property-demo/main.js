@@ -1,22 +1,13 @@
-
-const makeRed = () => {
-    // your code here...
-    console.log('Change background to red');
-    document.querySelector('body').style.backgroundColor = 'red';
+const changeBg = (sel, color) => {
+    document.querySelector('#section').style.backgroundColor = 'color';
 };
+const clearBgs = () => {
+    document.querySelectorAll('.my-section');
+    console.log(divs); {
+        //const
+        for (const div of divs) {
+        div.style.backgroundColor = 'transparent'; 
 
-const makeBlue = () => {
-    // your code here...
-    console.log('Change background to blue');
-};
-
-const makePink = () => {
-    // your code here...
-    console.log('Change background to pink');
-};
-
-const makeOrange = () => {
-    // your code here...
-    console.log('Change background to orange');
-};
-
+        }
+    }
+}
