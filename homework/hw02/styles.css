@@ -1,0 +1,236 @@
+* {
+    box-sizing: border-box;
+}
+
+.navbar {
+    background-color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.app-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    margin-right: 10px;
+}
+
+.logout-btn {
+    padding: 5px 10px;
+    background-color: #ff5f5f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.suggestions-panel {
+    width: 300px;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+h4 {
+    margin-bottom: 15px;
+}
+
+.suggestions-list {
+    display: grid;
+    gap: 10px;
+}
+
+.suggestion {
+    display: grid;
+    grid-template-columns: 80px auto 80px;
+    align-items: center;
+}
+
+.suggestion-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggested {
+    color: #666;
+    font-size: 12px;
+}
+
+.follow-btn {
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.follow-btn:hover {
+    background-color: #007ac1;
+}
+
+.stories-panel {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.story {
+    text-align: center;
+}
+
+.profile-pic {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.username {
+    font-size: 14px;
+}
+
+.card {
+    background-color: white;
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 15px;
+    width: 500px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.username {
+    font-weight: bold;
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card-icons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.left-icons i {
+    margin-right: 10px;
+}
+
+.likes {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.caption, .comments {
+    margin-bottom: 10px;
+}
+
+.add-comment {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-comment input {
+    flex-grow: 1;
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-comment button {
+    background-color: #0095f6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Comfortaa', cursive;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.main-content {
+    width: 65%;
+    overflow-y: auto;
+    height: 100vh;
+    padding-right: 20px;
+}
+
+.suggestions-panel {
+    position: fixed;
+    right: 0;
+    top: 80px;
+    width: 30%;
+}
+
+@media (max-width: 800px) {
+    .suggestions-panel {
+        display: none;
+    }
+
+    .main-content {
+        width: 100%;
+    }
+}
