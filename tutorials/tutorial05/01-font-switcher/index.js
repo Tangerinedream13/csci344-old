@@ -1,9 +1,15 @@
-const makeBigger = () => {
-   alert('make bigger!');
+function makeBigger() {
+   const headerEL = document.querySelector("header");
+   headerEL.style.fontSize = "40px";
+   const contentEL = document.querySelector(".content");
+   contentEL.style.fontSize = "30px";
 };
 
-const makeSmaller = () => {
-   alert('make smaller!');
+function makeSmaller() {
+   const headerEL = document.querySelector("header");
+   headerEL.style.fontSize = "";
+   const contentEL = document.querySelector(".content");
+   contentEL.style.fontSize = "";
 };
 
 /*

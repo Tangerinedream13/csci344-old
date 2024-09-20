@@ -1,18 +1,30 @@
 const defaultTheme = ev => {
     // your code here.
+    const bodyEl = document.querySelector("body");
+    bodyEl.className ="default";
 };
+
+
 
 const oceanTheme = ev => {
    // your code here.
+   const bodyEl = document.querySelector("body");
+   bodyEl.className = "ocean";
 };
 
 const desertTheme = ev => {
    // your code here.
+   const bodyEl = document.querySelector("body");
+   bodyEl.className = "desert";
 };
 
 const highContrastTheme = ev => {
     // your code here.
+    const bodyEl = document.querySelector("body");
+    bodyEl.className = "high-contrast";
 }; 
+
+
 
 /*
     Hints: 

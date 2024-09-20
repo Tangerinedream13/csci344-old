@@ -5,7 +5,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    background-color: #f4f4f4;
+    background-color: #ddd;
 }
 
 h1, h2, h3, h4 {
@@ -15,15 +15,15 @@ h1, h2, h3, h4 {
 /* Navbar */
 .navbar {
     background-color: white;
-    padding: 5px 20px;
+    padding: 15px 40px;
     position: fixed;
     top: 0;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .app-title {
@@ -59,12 +59,13 @@ h1, h2, h3, h4 {
 /* Sidebar: Suggestions Panel */
 .suggestions-panel {
     width: 300px;
-    background-color: #ddd;
+    background-color: #f9f9f9;
     border: 1px solid #ddd;
     padding: 15px;
     position: fixed;
     right: 0;
-    top: 80px;
+    top: 40px;
+    bottom: 0;
     width: 30%;
 }
 
@@ -92,13 +93,14 @@ h4 {
 .suggestions-list {
     display: grid;
     gap: 10px;
-    background-color: ddd;
+
 }
 
 .suggestion {
-    display: grid;
-    grid-template-columns: 80px auto 80px;
+    display: flex;
+    padding: 10px; 
     align-items: center;
+    margin-bottom: 5px;
 }
 
 .suggestion-info {
@@ -108,9 +110,9 @@ h4 {
 }
 
 .suggested {
-    color: #666;
-    font-size: 12px;
-    
+    color: #494848;
+    font-size: 12px; 
+
 }
 
 .follow-btn {
@@ -130,26 +132,27 @@ h4 {
 /* Main Content */
 .main-content {
     width: 65%;
-    margin-right: 20px;
-    margin-left: 30px; 
+    margin-right: 0px;
+    margin-left: 50px; 
     overflow-y: auto;
-    padding-left: 30px; 
+    padding-left: 20px; 
     padding-right: 20px;
     height: 100vh;
 }
 
 .stories-panel {
     display: flex;
-    gap: 15px;
+    margin-left: 30px; 
     margin-bottom: 20px;
     background-color: white; 
-    padding: 30px; 
-    border: 1px solid #ddd; display;
-    margin-top: 20px; 
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    margin-top: 100px; 
 }
 
 .story {
     text-align: center;
+    margin-left: 40px; 
 }
 
 .story img {
@@ -170,6 +173,9 @@ h4 {
     margin-bottom: 20px;
     padding: 15px;
     width: 500px;
+    border-radius: 5px; 
+    margin-left: 80px; 
+    margin-right: 0; 
 }
 
 .card-header {
@@ -187,6 +193,7 @@ h4 {
     width: 100%;
     height: auto;
     margin-bottom: 10px;
+    border-radius: 5px; 
 }
 
 .card-icons {
@@ -206,13 +213,9 @@ h4 {
 
 .caption, .comments {
     margin-bottom: 10px;
+    font-size: 14px; 
 }
 
-.time-posted {
-    font-size: 12px;
-    color: #888;
-    margin-bottom: 10px; /* Adds space between time and comments */
-}
 .add-comment {
     display: flex;
     justify-content: space-between;
@@ -229,11 +232,13 @@ h4 {
 
 .add-comment button {
     background-color: transparent;
-    color: blue;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
     cursor: pointer;
+}
+
+.time-posted {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px; 
 }
 
 @media (max-width: 800px) {
@@ -244,9 +249,11 @@ h4 {
     .main-content {
         width: 100%;
         margin-left: 0; 
+        margin-right: 0; 
     }
 
     .card {
         width: 100%;
+        padding: 10px; 
     }
 }

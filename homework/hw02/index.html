@@ -13,18 +13,21 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <header class="navbar" id="top-header">
-        <div class="nav-left">
-            <span class="app-title">Photo App</span>
-        </div>
-        <div class="nav-right">
-            <span class="username">gibsonjack</span>
-            <button class="logout-btn">Sign out</button>
-        </div>
+    <header id="top-header">   
+        <h1 class="logo">Instabam</h1>
+        <nav>Navigation goes here</nav>
     </header>
+    <aside>(aside tag) - Fixed to right</aside>
+    <header>Username stuff</header>
+    <section>Suggestions for you
+    <p>Fake content</p>
+    <p>Fake content</p>
+    <p>Fake content</p>
+    <p>Fake content</p>
+    <p>Fake content</p>
+    </section>
+    </aside>
 
-    <!-- Sidebar: User Profile and Suggestions -->
     <aside class="suggestions-panel" style="position: fixed; right: 0;">
         <div class="user-profile">
             <img src="https://picsum.photos/60" alt="user profile" class="profile-pic">
@@ -76,67 +79,207 @@
             </div>
         </div>
     </aside>
-
-    <!-- Main Content -->
-    <main>
-        <section class="stories-panel">
-            <div class="story">
-                <img src="https://picsum.photos/50" alt="story1" class="profile-pic">
-                <span class="username">gouldjennifer</span>
-            </div>
-            <div class="story">
-                <img src="https://picsum.photos/51" alt="story2" class="profile-pic">
-                <span class="username">matthew16</span>
-            </div>
-            <div class="story">
-                <img src="https://picsum.photos/52" alt="story3" class="profile-pic">
-                <span class="username">sanchezjill</span>
-            </div>
-            <div class="story">
-                <img src="https://picsum.photos/53" alt="story4" class="profile-pic">
-                <span class="username">gloria62</span>
-            </div>
-            <div class="story">
-                <img src="https://picsum.photos/54" alt="story5" class="profile-pic">
-                <span class="username">jwright</span>
-            </div>
-        </section>
-
-        <section class="posts-section">
-            <div class="card">
-                <div class="card-header">
-                    <span class="username">gibsonjack</span>
-                    <i class="fa-solid fa-ellipsis"></i>
+        <main>
+            <section class="stories-panel">
+                <div class="story">
+                    <img src="https://picsum.photos/50" alt="story1" class="profile-pic">
+                    <span class="username">gouldjennifer</span>
                 </div>
-                <img src="https://picsum.photos/500/300" alt="post image" class="post-image">
-                
-                <div class="card-icons">
-                    <div class="left-icons">
-                        <i class="fa-regular fa-heart"></i>
-                        <i class="fa-regular fa-comment"></i>
-                        <i class="fa-regular fa-paper-plane"></i>
+                <div class="story">
+                    <img src="https://picsum.photos/51" alt="story2" class="profile-pic">
+                    <span class="username">matthew16</span>
+                </div>
+                <div class="story">
+                    <img src="https://picsum.photos/52" alt="story3" class="profile-pic">
+                    <span class="username">sanchezjill</span>
+                </div>
+                <div class="story">
+                    <img src="https://picsum.photos/53" alt="story4" class="profile-pic">
+                    <span class="username">gloria62</span>
+                </div>
+                <div class="story">
+                    <img src="https://picsum.photos/54" alt="story5" class="profile-pic">
+                    <span class="username">jwright</span>
+                </div>
+            </section>
+    
+            <section class="posts-section">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="username">gibsonjack</span>
+                        <i class="fa-solid fa-ellipsis"></i>
                     </div>
-                    <i class="fa-regular fa-bookmark"></i>
+                    <img src="https://picsum.photos/500/301" alt="post image" class="post-image">
+                    
+                    <div class="card-icons">
+                        <div class="left-icons">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-regular fa-comment"></i>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </div>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+    
+                    <div class="likes">30 likes</div>
+                    
+                    <div class="caption">
+                        <span class="username">gibsonjack</span> Here is a caption about the photo... <a href="#">more</a>
+                    </div>
+    
+                    <div class="comments">
+                        <p><span class="username">lizzie</span> Here is a comment text...</p>
+                        <p><span class="username">vanelk97</span> Another comment text...</p>
+                    </div>
+                    <div class="time-posted">1 DAY AGO</div>
+                    <div class="add-comment">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Add a comment...">
+                        <button>Post</button>
+                    </div>
                 </div>
-
-                <div class="likes">30 likes</div>
-                
-                <div class="caption">
-                    <span class="username">gibsonjack</span> Here is a caption about the photo... <a href="#">more</a>
+            </section>
+            <section class="posts-section">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="username">danhaddon</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <img src="https://picsum.photos/500/302" alt="post image" class="post-image">
+                    
+                    <div class="card-icons">
+                        <div class="left-icons">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-regular fa-comment"></i>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </div>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+    
+                    <div class="likes">30 likes</div>
+                    
+                    <div class="caption">
+                        <span class="username">danhaddon</span> Here is a caption about the photo... <a href="#">more</a>
+                    </div>
+    
+                    <div class="comments">
+                        <p><span class="username">lizzie</span> Here is a comment text...</p>
+                        <p><span class="username">vanelk97</span> Another comment text...</p>
+                    </div>
+                    <div class="time-posted">1 DAY AGO</div>
+                    <div class="add-comment">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Add a comment...">
+                        <button>Post</button>
+                    </div>
                 </div>
-
-                <div class="comments">
-                    <p><span class="username">lizzie</span> Here is a comment text...</p>
-                    <p><span class="username">vanelk97</span> Another comment text...</p>
+            </section>
+            <section class="posts-section">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="username">matthew16</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <img src="https://picsum.photos/500/303" alt="post image" class="post-image">
+                    
+                    <div class="card-icons">
+                        <div class="left-icons">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-regular fa-comment"></i>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </div>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+    
+                    <div class="likes">30 likes</div>
+                    
+                    <div class="caption">
+                        <span class="username">matthew16</span> Here is a caption about the photo... <a href="#">more</a>
+                    </div>
+    
+                    <div class="comments">
+                        <p><span class="username">lizzie</span> Here is a comment text...</p>
+                        <p><span class="username">vanelk97</span> Another comment text...</p>
+                    </div>
+                    <div class="time-posted">1 DAY AGO</div>
+                    <div class="add-comment">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Add a comment...">
+                        <button>Post</button>
+                    </div>
                 </div>
-                <div class="time-posted">1 DAY AGO</div>
-                <div class="add-comment">
-                    <i class="fa-regular fa-face-smile"></i>
-                    <input type="text" placeholder="Add a comment...">
-                    <button>Post</button>
+            </section>
+            <section class="posts-section">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="username">gloria62</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <img src="https://picsum.photos/500/304" alt="post image" class="post-image">
+                    
+                    <div class="card-icons">
+                        <div class="left-icons">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-regular fa-comment"></i>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </div>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+    
+                    <div class="likes">30 likes</div>
+                    
+                    <div class="caption">
+                        <span class="username">gloria62</span> Here is a caption about the photo... <a href="#">more</a>
+                    </div>
+    
+                    <div class="comments">
+                        <p><span class="username">lizzie</span> Here is a comment text...</p>
+                        <p><span class="username">vanelk97</span> Another comment text...</p>
+                    </div>
+                    <div class="time-posted">1 DAY AGO</div>
+                    <div class="add-comment">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Add a comment...">
+                        <button>Post</button>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <section class="posts-section">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="username">mariahaddon</span>
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <img src="https://picsum.photos/500/305" alt="post image" class="post-image">
+                    
+                    <div class="card-icons">
+                        <div class="left-icons">
+                            <i class="fa-regular fa-heart"></i>
+                            <i class="fa-regular fa-comment"></i>
+                            <i class="fa-regular fa-paper-plane"></i>
+                        </div>
+                        <i class="fa-regular fa-bookmark"></i>
+                    </div>
+    
+                    <div class="likes">30 likes</div>
+                    
+                    <div class="caption">
+                        <span class="username">mariahaddon</span> Here is a caption about the photo... <a href="#">more</a>
+                    </div>
+    
+                    <div class="comments">
+                        <p><span class="username">lizzie</span> Here is a comment text...</p>
+                        <p><span class="username">vanelk97</span> Another comment text...</p>
+                    </div>
+                    <div class="time-posted">1 DAY AGO</div>
+                    <div class="add-comment">
+                        <i class="fa-regular fa-face-smile"></i>
+                        <input type="text" placeholder="Add a comment...">
+                        <button>Post</button>
+                    </div>
+                </div>
+            </section>
+    
+        </main>
     </main>
 
 </body>
