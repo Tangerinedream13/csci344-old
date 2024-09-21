@@ -2,292 +2,142 @@
     box-sizing: border-box;
 }
 
-body * {
-    box-sizing: border-box;
-}
-
 body {
     margin: 0;
     background: #F4F4F4;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Begin Debugging Code */
-header,
-main,
-section,
-article,
-nav,
-.logo {
-    border: solid 2px #CCC;
-    padding: 10px;
-    margin: 10px;
-}
-
-.logo {
-    font-size: 1em;
-    font-weight: normal;
-}
-
-aside,
-body>header,
-main,
-.news-feed {
-    border: solid 4px #000;
-    padding: 10px;
-    margin: 10px;
-}
-
-/* End Debugging Code */
-
-article {
-    min-height: 300px;
-}
-
-#top-header {
-    background-color: white;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
-}
-
-aside {
-    margin: 0;
-    top: 120px;
-    right: 5vw;
-    background-color: white;
-    position: fixed;
-    width: 30vw;
-}
-
-main {
-    margin-top: 120px;
-    width: 55vw;
-    margin-left: 5vw;
-}
-
-
-@media (max-width: 800px) {
-
-    aside {
-        display: none;
-    }
-
-    main {
-        margin-top: 100px;
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        padding: 20px;
-    }
-
-}
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background-color: #ddd;
-}
-
-h1, h2, h3, h4 {
+h1, h2, h3 h4 {
     font-family: 'Comfortaa', cursive;
+
 }
 
 #top-header {
+    background-color: white;
     position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: white;
     padding: 10px 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
-}
-.nav {
-    background-color: white;
-    padding: 15px 40px;
-    position: fixed;
-    top: 0;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 1000;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
-.app-title {
+#top-header h1 {
+    margin: 0;
     font-size: 24px;
     font-weight: bold;
 }
 
-.nav-right {
-    display: flex;
-    align-items: center;
-}
-
-.username {
-    margin-right: 10px;
-}
-
-.logout-btn {
-    padding: 5px 10px;
-    background-color: transparent;
-    color: blue;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Main Layout */
-.container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 100px;
-}
-
-/* Sidebar: Suggestions Panel */
-.suggestions-panel {
-    width: 300px;
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 15px;
+aside {
     position: fixed;
     right: 0;
-    top: 40px;
-    bottom: 0;
-    width: 30%;
+    top: 60px;
+    background-color: white;
+    padding: 20px;
+    width: 25vw;
+    height: calc(100vh - 60px);
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
 }
 
-.user-profile {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.profile-pic {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.username {
+aside header {
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
-h4 {
-    margin-bottom: 15px;
-}
+
+
+
+
+
 
 .suggestions-list {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 10px;
-
 }
 
 .suggestion {
     display: flex;
-    padding: 10px; 
+    justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
+}
+
+.suggestion img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
 }
 
 .suggestion-info {
-    display: flex;
-    flex-direction: column;
-
-}
-
-.suggested {
-    color: #494848;
-    font-size: 12px; 
-
+    flex-grow: 1;
 }
 
 .follow-btn {
     background-color: transparent;
-    color: blue;
-    border: none;
-    padding: 5px 10px;
+    color: #3897f0;
+    border: 1px solid #3897f0;
     border-radius: 5px;
+    padding: 5px 10px;
     cursor: pointer;
 }
 
 .follow-btn:hover {
-    background-color: transparent;
-    color: blue; 
+    background-color: #3897f0;
+    color: white;
 }
 
-/* Main Content */
-.main-content {
-    width: 65%;
-    margin-right: 0px;
-    margin-left: 50px; 
-    overflow-y: auto;
-    padding-left: 20px; 
-    padding-right: 20px;
-    height: 100vh;
+main {
+    margin-top: 60px;
+    width: 70vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
 }
 
 .stories-panel {
     display: flex;
-    margin-left: 30px; 
+    justify-content: space-between;
     margin-bottom: 20px;
-    background-color: white; 
-    padding: 20px; 
-    border: 1px solid #ddd; 
-    margin-top: 100px; 
 }
 
 .story {
     text-align: center;
-    margin-left: 40px; 
 }
 
 .story img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    display: block;
-    margin: 0 auto 5px;
 }
 
 .story .username {
     font-size: 14px;
+    color: #333;
 }
 
 .card {
     background-color: white;
     border: 1px solid #ddd;
     margin-bottom: 20px;
-    padding: 15px;
-    width: 500px;
-    border-radius: 5px; 
-    margin-left: 80px; 
-    margin-right: 0; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .card .username {
     font-weight: bold;
-}
-
-.post-image {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 5px; 
+    color: #333;
 }
 
 .card-icons {
@@ -307,7 +157,8 @@ h4 {
 
 .caption, .comments {
     margin-bottom: 10px;
-    font-size: 14px; 
+    font-size: 14px;
+    color: #333;
 }
 
 .add-comment {
@@ -332,22 +183,22 @@ h4 {
 .time-posted {
     font-size: 12px;
     color: #888;
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
 }
 
 @media (max-width: 800px) {
-    .suggestions-panel {
+    aside {
         display: none;
     }
 
-    .main-content {
+    main {
         width: 100%;
-        margin-left: 0; 
-        margin-right: 0; 
+        padding: 10px;
+        margin: 0;
     }
 
     .card {
         width: 100%;
-        padding: 10px; 
+        padding: 10px;
     }
 }
