@@ -33,6 +33,42 @@ h1, h2, h3 h4 {
     font-weight: bold;
 }
 
+#user-info {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    background-color: white;
+    padding: 20px;
+    width: 25vw;
+    height: calc(100vh - 60px);
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Slight rounding of corners */
+    box-sizing: border-box;  /* Ensures padding is within the total width */
+}
+
+#user-info header h2 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#user-info section {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+.logout-btn {
+    background-color: transparent;
+    color: blue;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+
 aside {
     position: fixed;
     right: 0;
