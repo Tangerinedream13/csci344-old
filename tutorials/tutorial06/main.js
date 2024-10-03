@@ -31,20 +31,28 @@ const search = (ev) => {
 
 // Part 1.1a
 const filterClassFull = (course) => {
-    // modify this
-    return true;
+    return course.EnrollmentCurrent < course.EnrollmentMax;
 };
 
 // Part 1.1b
-const filterTermMatched = (course) => {
-    // modify this
-    return true;
+const filterTermMatched = (course, searchTerm) => {
+    const lowerSearchTerm = searchTerm.toLowerCase();
+    //return
 };
 
 // Part 1.2
 const dataToHTML = (course) => {
     // modify this
-    return `Some HTML representation of the course...`;
+    return `
+    <div class="course">
+        <h2>${course.Code}: ${course.Title}</h2>
+        <p><strong>Instructor:</strong> ${course.Instructors.map(i => i.Name).join(", ")}</p>
+        <p><strong>Days:</strong> ${course.Days}</p>
+        <p><strong>Time:</strong> ${new Date(course.StartTime).toLocaleTimeString()} - ${new Date(course.EndTime).toLocaleTimeString()}</p>
+        <p><strong>Location:</strong> ${course.Location.FullLocation}</p>
+        <p><strong>Enrollment:</strong> ${course.EnrollmentCurrent}/${course.EnrollmentMax}</p>
+    </div>
+`;
 };
 
 // Part 2
@@ -52,4 +60,37 @@ const showData = (searchTerm, openOnly) => {
     console.log(searchTerm, openOnly);
     console.log(data); // imported from course-data.js
     // Your code here:
+
+    // Function to show the filtered courses based on the search term and openOnly flag
+const showData = (searchTerm, openOnly) => {
+    // Filter data based on user's input:
+    let filteredData = data;
+
+    // Apply the filter for term matching, if a search term is provided
+    if (searchTerm) {
+        filteredData = filteredData.filter(course => filterTermMatched(course, searchTerm));
+    }
+
+    // Apply the filter to show only open courses, if the openOnly checkbox is checked
+    if (openOnly) {
+        filteredData = filteredData.filter(filterClassFull);
+    }
+
+    // Map the filtered data to an array of HTML strings
+    const htmlString = filteredData
+        .map(course => dataToHTML(course))
+        .join(""); // Join all the HTML strings into one
+
+    // Clear out the existing courses in the DOM
+    const coursesContainer = document.querySelector("#courses-container");
+    coursesContainer.innerHTML = ""; // Clear current content
+
+    // Insert the generated HTML into the DOM
+    coursesContainer.insertAdjacentHTML("beforeend", htmlString);
+};
+
+// Attach the search function to the button's click event
+document.querySelector("button").addEventListener("click", search);
+
+
 };

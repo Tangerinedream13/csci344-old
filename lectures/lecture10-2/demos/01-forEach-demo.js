@@ -12,4 +12,5 @@ myList.forEach((item) => console.log(item));
 console.log("\nforeach (alternate strategy):");
 const printFunction = (item) => console.log(item);
 
-myList.forEach(printFunction);
+const result = myList.forEach(printFunction);
+console.log;(result);

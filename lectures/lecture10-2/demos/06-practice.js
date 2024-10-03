@@ -104,3 +104,17 @@ const statuses = [
  *   4. create a function that returns the total number of retweets 
  *      (across all of the statuses in the list).
  */
+
+// primary function
+
+function filterOutUndefineds(item){
+    return item !== undefined; 
+}
+
+const getImageURrls = (statArray) => {
+    const getImgURL = item => item.image_url;
+    return statArray.map(getImgURL);
+}
+
+console.log(getImageURrls(statuses));
+
