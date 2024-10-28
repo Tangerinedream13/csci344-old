@@ -31,66 +31,85 @@ const search = (ev) => {
 
 // Part 1.1a
 const filterClassFull = (course) => {
-    return course.EnrollmentCurrent < course.EnrollmentMax;
+    // modify this
+    return true;
 };
 
 // Part 1.1b
-const filterTermMatched = (course, searchTerm) => {
-    const lowerSearchTerm = searchTerm.toLowerCase();
-    //return
+const filterTermMatched = (course) => {
+    // modify this
+    return true;
 };
 
 // Part 1.2
 const dataToHTML = (course) => {
-    // modify this
+    // 5 min to do the following:
+    // **Output days that course is offered
+    // **Output location
+    // **Output credit hours
+    // **Output instructor
+    // **Seats available
+    // **Output CRN
+    // **Output open or closed symbol + Open / Closed
     return `
-    <div class="course">
-        <h2>${course.Code}: ${course.Title}</h2>
-        <p><strong>Instructor:</strong> ${course.Instructors.map(i => i.Name).join(", ")}</p>
-        <p><strong>Days:</strong> ${course.Days}</p>
-        <p><strong>Time:</strong> ${new Date(course.StartTime).toLocaleTimeString()} - ${new Date(course.EndTime).toLocaleTimeString()}</p>
-        <p><strong>Location:</strong> ${course.Location.FullLocation}</p>
-        <p><strong>Enrollment:</strong> ${course.EnrollmentCurrent}/${course.EnrollmentMax}</p>
-    </div>
-`;
+        <section class="course">
+            <h2>${course.Code}: ${course.Title}</h2>
+            <p>
+                ${course.Classification.Open ? "Open" : "Closed"}   &bull; ${course.CRN} &bull; Seats Available: ${course.EnrollmentMax-course.EnrollmentCurrent}
+            </p>
+            <p>
+                ${course.Days} &bull; 
+                ${course.Location.FullLocation} &bull; 
+                ${course.Hours} credit hour(s)
+            </p>
+            <p><strong>${course.Instructors[0].Name}</strong></p>
+        </section>
+    `;
 };
+// const showDays = (course) => {
+//     if (course.Days) {
+//         return `${course.Days} &bull; `;
+//     }
+
+        
+//     }
+// }
+
+const addCourseToDOM = (course) => {
+    const htmlSnippet = dataToHTML (course);
+
+    //target the "Courses" container 
+    const containerEl = document.querySelector (".courses");
+
+    //append the snippet to the "Courses" container; 
+    containerEl.innerHTML += htmlSnippet;
+
+}
 
 // Part 2
 const showData = (searchTerm, openOnly) => {
     console.log(searchTerm, openOnly);
     console.log(data); // imported from course-data.js
-    // Your code here:
 
-    // Function to show the filtered courses based on the search term and openOnly flag
-const showData = (searchTerm, openOnly) => {
-    // Filter data based on user's input:
-    let filteredData = data;
+    const searchTermMatch = (course) => {
+        if (course.Title.toLowerCase().includes(searchTerm.toLowerCase())) {
+            return true; 
+        }
+        return false;
+    };
 
-    // Apply the filter for term matching, if a search term is provided
-    if (searchTerm) {
-        filteredData = filteredData.filter(course => filterTermMatched(course, searchTerm));
-    }
-
-    // Apply the filter to show only open courses, if the openOnly checkbox is checked
-    if (openOnly) {
-        filteredData = filteredData.filter(filterClassFull);
-    }
-
-    // Map the filtered data to an array of HTML strings
-    const htmlString = filteredData
-        .map(course => dataToHTML(course))
-        .join(""); // Join all the HTML strings into one
-
-    // Clear out the existing courses in the DOM
-    const coursesContainer = document.querySelector("#courses-container");
-    coursesContainer.innerHTML = ""; // Clear current content
-
-    // Insert the generated HTML into the DOM
-    coursesContainer.insertAdjacentHTML("beforeend", htmlString);
-};
-
-// Attach the search function to the button's click event
-document.querySelector("button").addEventListener("click", search);
-
+    const searchOpenMatch = (course) => {
+        if (openOnly) {
+            return course.Classification.Open; 
+        }
+        return true; 
+    };
+    //before appending new snippets, you want to clear things out!
+    document.querySelector(".courses").innerHTML = "";
+    data.filter(searchTermMatch).filter(searchOpenMatch).forEach(addCourseToDOM); 
 
 };
+
+   
+//     data.forEach(addCourseToDOM);
+// };
