@@ -58,8 +58,6 @@ function showPosts(posts) {
 
     // loop through each post and append an HTML respresentation of the post to the DOM:
     posts.forEach(post => {
-            //mainEl.insertAdjacentHTML("beforeend", `<div>${post.caption}</div>`);
-            // });
         const template = ` 
         <section class="bg-white border mb-10">
         <div class="p-4 flex justify-between">
@@ -128,22 +126,19 @@ function showComments(comments) {
     if(comments.length === 1) {
         const lastComment = comments[0];
         return `<p class="text-sm mb-3">
-            <strong>${lastComment.user.username}</strong> ${lastComment.text}
-        </p> 
-    `;
-
+            <strong>${comments[0].user.username}</strong> ${comments[0].text}
+        </p>`
     }
         return '';
     }
     function getLikeButton(post) {
-        let iconClass = "far fa-heart"; // Adjusted to include "fa-heart"
-        if (post.current_user_like_id){
-            iconClass = "fa-solid fa-heart text-red-700";
+        let iconClass = "far" 
+        if (post.current_user_like_id) {
+            iconClass = "fa-solid text-red-700"
         }
-        return `<button><i class="${iconClass}"></i></button>`;
+        return `<button><i class="${iconClass} fa-heart"></i></button>`
     }
    
-
     function getBookmarkButton(post) { 
         // already bookmarked
         if (post.current_user_bookmark_id) {
@@ -159,21 +154,22 @@ function showComments(comments) {
     
   window.createBookmark = async function(postID) {
         const postData = {
-            "post_id": postID,
+            post_id: postID,
         };
         
-        const response = await fetch("https://photo-app-secured.herokuapp.com/api/bookmarks/", {
-            method: "POST",
+        const response = await fetch(
+            "https://photo-app-secured.herokuapp.com/api/bookmarks/", 
+            {
+            method: "POST", // create new resource on the server
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(postData),
+            body: JSON.stringify(postData), // the data that's getting sent to the server
         });
-    
         const data = await response.json();
         console.log(data);
-    }
+}
     
 window.deleteBookmark = async function(bookmarkId) {
     const response = await fetch(`"https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
@@ -185,7 +181,7 @@ window.deleteBookmark = async function(bookmarkId) {
     }); 
     const data = await response.json();
     console.log(data);
-    }
+    };
 
 // after all of the functions are defined, invoke initialize at the bottom:
 initializeScreen(); 
