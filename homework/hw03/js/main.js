@@ -31,15 +31,15 @@ function showNav() {
  */
 
 async function getPosts() {
-    // get the HTTP response header:
     const endpoint =
         "https://photo-app-secured.herokuapp.com/api/posts/?limit=10";
+    // get the HTTP response header:
     const response = await fetch(endpoint, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
-        }
+        },
     });
 
     // get the HTTP body (JSON object):
@@ -56,11 +56,11 @@ function showPosts(posts) {
     // get a reference to the HTML tag where we want to add the posts:
     const mainEl = document.querySelector("main");
 
-    // loop through each post and append an HTML respresentation of the post
-    // to the DOM:
+    // loop through each post and append an HTML respresentation of the post to the DOM:
     posts.forEach(post => {
+            //mainEl.insertAdjacentHTML("beforeend", `<div>${post.caption}</div>`);
+            // });
         const template = ` 
-        
         <section class="bg-white border mb-10">
         <div class="p-4 flex justify-between">
             <h3 class="text-lg font-Comfortaa font-bold">${post.user.username}</h3>
@@ -72,14 +72,15 @@ function showPosts(posts) {
             <!-- button panel -->
             <div class="flex justify-between text-2xl mb-3">
                 <div>
-                    <button><i class="far fa-heart"></i></button>
+                    ${ getLikeButton(post) }
                     <button><i class="far fa-comment"></i></button>
                     <button><i class="far fa-paper-plane"></i></button>
                 </div>
                 <div>
-                    <button><i class="far fa-bookmark"></i></button>
+                    ${ getBookmarkButton(post) }
                 </div>
             </div>
+
             <!-- number of likes -->
             <p class="font-bold mb-3">${post.likes.length} like(s)</p>
 
@@ -132,12 +133,59 @@ function showComments(comments) {
     `;
 
     }
+        return '';
+    }
+    function getLikeButton(post) {
+        let iconClass = "far fa-heart"; // Adjusted to include "fa-heart"
+        if (post.current_user_like_id){
+            iconClass = "fa-solid fa-heart text-red-700";
+        }
+        return `<button><i class="${iconClass}"></i></button>`;
+    }
+   
 
-    return '';
-
-
-}
+    function getBookmarkButton(post) { 
+        // already bookmarked
+        if (post.current_user_bookmark_id) {
+            return `<button onclick="deleteBookmark(${post.current_user_bookmark_id})"><i class="fa-solid fa-bookmark"></i></button>`;
+        } else {
+        // not bookmarked
+            return `
+                <button onclick="createBookmark(${post.id})">
+                    <i class="far fa-bookmark"></i>
+                </button>`;
+        }
+    }
+    
+  window.createBookmark = async function(postID) {
+        const postData = {
+            "post_id": postID,
+        };
+        
+        const response = await fetch("https://photo-app-secured.herokuapp.com/api/bookmarks/", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(postData),
+        });
+    
+        const data = await response.json();
+        console.log(data);
+    }
+    
+window.deleteBookmark = async function(bookmarkId) {
+    const response = await fetch(`"https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    }); 
+    const data = await response.json();
+    console.log(data);
+    }
 
 // after all of the functions are defined, invoke initialize at the bottom:
-initializeScreen();
-
+initializeScreen(); 
