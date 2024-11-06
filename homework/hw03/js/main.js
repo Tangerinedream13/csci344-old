@@ -141,12 +141,6 @@ function showComments(comments) {
                     <i class="fa-regular fa-heart"></i>
                 </button>`;
         }
-        // let iconClass = "far" 
-        // if (post.current_user_like_id) {
-        //     iconClass = "fa-solid text-red-700"
-        // }
-        // return `
-        // <button onclick="createLike(${post.id})"><i class="${iconClass} fa-heart"></i></button>`
     }
    
     function getBookmarkButton(post) { 
