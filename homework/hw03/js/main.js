@@ -130,12 +130,23 @@ function showComments(comments) {
     }
         return '';
     }
+
     function getLikeButton(post) {
-        let iconClass = "far" 
         if (post.current_user_like_id) {
-            iconClass = "fa-solid text-red-700"
+            return `<button onclick="unlike(${post.current_user_like_id})"><i class="fa-solid text-red-700 fa-heart"></i></button>`;
+        } else {
+        // not liked
+            return `
+                <button onclick="createLike(${post.id})">
+                    <i class="fa-regular fa-heart"></i>
+                </button>`;
         }
-        return `<button><i class="${iconClass} fa-heart"></i></button>`
+        // let iconClass = "far" 
+        // if (post.current_user_like_id) {
+        //     iconClass = "fa-solid text-red-700"
+        // }
+        // return `
+        // <button onclick="createLike(${post.id})"><i class="${iconClass} fa-heart"></i></button>`
     }
    
     function getBookmarkButton(post) { 
@@ -172,6 +183,38 @@ function showComments(comments) {
     
 window.deleteBookmark = async function(bookmarkId) {
     const response = await fetch(`https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    }); 
+    const data = await response.json();
+    console.log(data);
+    };
+
+
+window.createLike = async function(postID) {
+        const postData = {
+            post_id: postID,
+        };
+        
+        const response = await fetch(
+            `https://photo-app-secured.herokuapp.com/api/likes/`,
+            {
+            method: "POST", // create new resource on the server
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify(postData), // the data that's getting sent to the server
+        });
+        const data = await response.json();
+        console.log(data);
+}
+
+window.unlike = async function(likeID) {
+    const response = await fetch(`https://photo-app-secured.herokuapp.com/api/likes/${likeID}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
