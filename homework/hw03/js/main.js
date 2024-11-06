@@ -1,7 +1,7 @@
 import { getAccessToken } from "./utilities.js";
 const rootURL = "https://photo-app-secured.herokuapp.com";
 let token = null;
-let username = "sarah";
+let username = "maria";
 let password = "password";
 
 async function initializeScreen() {
@@ -86,7 +86,6 @@ function showPosts(posts) {
             <div class="text-sm mb-3">
                 <p>
                     <strong>${post.user.username}</strong>
-                    Here is a caption about the photo.
                     ${post.caption}
                 </p>
             </div>
@@ -172,7 +171,7 @@ function showComments(comments) {
 }
     
 window.deleteBookmark = async function(bookmarkId) {
-    const response = await fetch(`"https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
+    const response = await fetch(`https://photo-app-secured.herokuapp.com/api/bookmarks/${bookmarkId}`, {
         method: "DELETE",
         headers: {
             'Content-Type': 'application/json',
