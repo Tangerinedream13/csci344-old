@@ -8,7 +8,35 @@ async function initializeScreen() {
     token = await getAccessToken(rootURL, username, password);
     showNav();
     getPosts();
+    getSuggestions();
+    getStories(); 
+    getProfile();
 }
+
+async function getProfile() {
+    // go out to the internet, get suggestions, and then bring them down to my browser.
+    const endpoint = "https://photo-app-secured.herokuapp.com/api/profile/";
+    const response = await fetch(endpoint, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    }); 
+    const profile = await response.json();
+    console.log(profile);
+    
+showProfile(profile); 
+
+}
+
+function showProfile(profile) {
+    document.querySelector("#profile").innerHTML = `
+    <img src="https://picsum.photos/60/60?q=11" class="rounded-full w-16" />
+    <h2 class="font-Comfortaa font-bold text-2xl">maria</h2>
+    `;
+}
+
 
 function showNav() {
     document.querySelector("#nav").innerHTML = `
@@ -52,6 +80,78 @@ async function getPosts() {
     showPosts(posts);
 }
 
+
+async function getSuggestions() {
+    // go out to the internet, get suggestions, and then bring them down to my browser.
+    const endpoint = "https://photo-app-secured.herokuapp.com/api/suggestions/";
+    const response = await fetch(endpoint, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    }); 
+    const suggestions = await response.json();
+    console.log(suggestions);
+    
+showSuggestions(suggestions); 
+
+}
+
+function showSuggestions(suggestions) {
+    // Get a reference to the HTML tag where we want to add the suggestions
+    const suggestionsEl = document.querySelector("#suggestions");
+
+    // Loop through each suggestion and append an HTML representation of it to the DOM
+    suggestions.forEach(suggestion => {
+        const template = `
+            <section class="flex justify-between items-center mb-4 gap-2">
+                <img src="${suggestion.thumb_url}" class="rounded-full" />
+                <div class="w-[180px]">
+                    <p class="font-bold text-sm">${suggestion.username}</p>
+                    <p class="text-gray-500 text-xs">suggested for you</p>
+                </div>
+                <button class="text-blue-500 text-sm py-2">follow</button>
+            </section>
+        `;
+        suggestionsEl.insertAdjacentHTML("beforeend", template);
+    });
+}
+
+async function getStories() {
+    // go out to the internet, get suggestions, and then bring them down to my browser.
+    const endpoint = "https://photo-app-secured.herokuapp.com/api/stories/";
+    const response = await fetch(endpoint, {
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        }
+    }); 
+    const stories = await response.json();
+    console.log(stories);
+    
+showStories(stories); 
+
+}
+
+function showStories(stories) {
+    // Get a reference to the HTML tag where we want to add the stories
+    const storiesEl = document.querySelector("#stories");
+
+    // Loop through each story and append an HTML representation of it to the DOM
+    console.log(stories);
+    stories.forEach(story => {
+        const template = `
+            <div class="flex flex-col justify-center items-center">
+            <img src="${story.user.thumb_url}" class="rounded-full border-4 border-gray-300" />
+                <p class="text-xs text-gray-500">${story.user.username}</p></div>
+        `;
+        storiesEl.insertAdjacentHTML("beforeend", template);
+    });
+}    
+
+    
 function showPosts(posts) {
     // get a reference to the HTML tag where we want to add the posts:
     const mainEl = document.querySelector("main");
@@ -218,6 +318,7 @@ window.unlike = async function(likeID) {
     const data = await response.json();
     console.log(data);
     };
+
 
 // after all of the functions are defined, invoke initialize at the bottom:
 initializeScreen(); 
