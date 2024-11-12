@@ -37,8 +37,6 @@ function showProfile(profile) {
     `;
 }
 
-
-
 function showNav() {
     document.querySelector("#nav").innerHTML = `
         <nav class="flex justify-between py-5 px-9 bg-white border-b fixed w-full top-0">
@@ -50,7 +48,6 @@ function showNav() {
         </nav>
     `;
 }
-
 
 // implement remaining functionality below:
 /**
@@ -81,10 +78,8 @@ async function getPosts() {
     // invoke this function to actually  draw the posts to the screen:
     showPosts(posts);
 }
-
-
 async function getSuggestions() {
-    // go out to the internet, get suggestions, and then bring them down to my browser.
+    console.log("Fetching suggestions...");
     const endpoint = "https://photo-app-secured.herokuapp.com/api/suggestions/";
     const response = await fetch(endpoint, {
         method: "GET",
@@ -93,16 +88,30 @@ async function getSuggestions() {
             'Authorization': `Bearer ${token}`,
         }
     }); 
-    const suggestions = await response.json();
-    console.log(suggestions);
-    
-showSuggestions(suggestions); 
 
+    if (!response.ok) {
+        console.error("Failed to fetch suggestions:", response.status);
+        return;
+    }
+
+    const suggestions = await response.json();
+    console.log("Suggestions data:", suggestions);
+    
+    showSuggestions(suggestions); 
 }
 
 function showSuggestions(suggestions) {
     const suggestionsEl = document.querySelector("#suggestions");
 
+    if (!suggestionsEl) {
+        console.error("Suggestions element not found in DOM");
+        return;
+    }
+
+    // Clear the suggestions element
+    suggestionsEl.innerHTML = '';
+
+    // Loop through each suggestion and add it to the DOM
     suggestions.forEach(suggestion => {
         const template = `
             <section class="flex justify-between items-center mb-4 gap-2">
@@ -118,8 +127,6 @@ function showSuggestions(suggestions) {
         suggestionsEl.insertAdjacentHTML("beforeend", template);
     });
 }
-
-
 
 async function getStories() {
     // go out to the internet, get suggestions, and then bring them down to my browser.
@@ -143,7 +150,7 @@ function showStories(stories) {
 
     stories.forEach(story => {
         const template = `
-            <div class="flex flex-col justify-center items-center">
+            <div class="flex flex-col justify-center items-center w-20">
                 <img src="${story.user.thumb_url}" class="rounded-full border-4 border-gray-300" 
                      alt="Profile picture of ${story.user.username}" />
                 <p class="text-xs text-gray-800 font-semibold">${story.user.username}</p>
