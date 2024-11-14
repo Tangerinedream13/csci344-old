@@ -1,7 +1,6 @@
 import React, {useState} from "react"; 
 import { postDataToServer, deleteDataFromServer } from "../server-requests"
 
-
 // Job:
     // 1. Renders the bookmark (reflecting whether
     // the current user has bookmarked or not)
@@ -10,11 +9,12 @@ import { postDataToServer, deleteDataFromServer } from "../server-requests"
 export default function Bookmark({ token, bookmarkId, postId }) {
     const [stateBookmarkId, setStateBookmarkId] = useState(bookmarkId);
 
-
     async function createBookmark() {
         const sendData = {
             post_id: postId,
         };
+        console.log("creating a bookmark...");
+        // send an HTTP post request to create a bookmark
         const responseData = await postDataToServer(
             token, 
             "/api/bookmarks/", 
@@ -33,7 +33,9 @@ export default function Bookmark({ token, bookmarkId, postId }) {
         console.log(responseData);
         setStateBookmarkId(responseData.id);
     }
+
     console.log(stateBookmarkId);
+
     if (stateBookmarkId) {
         return (
             <button 
