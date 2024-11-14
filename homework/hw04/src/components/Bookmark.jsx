@@ -26,7 +26,7 @@ export default function Bookmark({ token, bookmarkId, postId }) {
 
     async function deleteBookmark() {
         console.log("deleting a bookmark...")
-        const responseData = await deleteDataToServer(
+        const responseData = await deleteDataFromServer(
             token, 
             "/api/bookmarks/", + stateBookmarkId
         );
