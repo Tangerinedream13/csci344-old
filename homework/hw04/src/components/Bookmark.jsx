@@ -35,7 +35,7 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     if (stateBookmarkId) {
         return (
             <button 
-                ariaLabel="Unbookmark This Post" 
+                aria-label="Unbookmark This Post" 
                 ariaChecked="true" 
                 ariaRole="toggle" 
                 onClick={deleteBookmark}
