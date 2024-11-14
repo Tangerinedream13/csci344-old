@@ -13,8 +13,6 @@ export default function Bookmark({ token, bookmarkId, postId }) {
         const sendData = {
             post_id: postId,
         };
-        console.log("creating a bookmark...");
-        // send an HTTP post request to create a bookmark
         const responseData = await postDataToServer(
             token, 
             "/api/bookmarks/", 
@@ -25,24 +23,22 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     }
 
     async function deleteBookmark() {
-        console.log("deleting a bookmark...")
         const responseData = await deleteDataFromServer(
             token, 
             "/api/bookmarks/", + stateBookmarkId
         );
         console.log(responseData);
-        setStateBookmarkId(responseData.id);
+        setStateBookmarkId(null);
     }
 
     console.log(stateBookmarkId);
-
     if (stateBookmarkId) {
         return (
             <button 
-            ariaLabel="Bookmark This Post" 
-            ariaChecked="true" 
-            ariaRole="toggle" 
-            onClick={deleteBookmark}
+                ariaLabel="Unbookmark This Post" 
+                ariaChecked="true" 
+                ariaRole="toggle" 
+                onClick={deleteBookmark}
             >
                 <i className="fas fa-bookmark"></i>
             </button>
@@ -50,10 +46,10 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     } else {
         return (
             <button 
-            ariaLabel="Bookmark This Post" 
-            ariaChecked="false" 
-            ariaRole="toggle" 
-            onClick={createBookmark}
+                ariaLabel="Bookmark This Post" 
+                ariaChecked="false" 
+                ariaRole="toggle" 
+                onClick={createBookmark}
             >
                 <i className="far fa-bookmark"></i>
             </button>
