@@ -42,7 +42,7 @@ export default function Post({ postData, token }) {
                     <div>
                          {/* Bookmark Button */}
                         <Bookmark 
-                        bookmarkID={postData.current_user_bookmark_id} 
+                        bookmarkId={postData.current_user_bookmark_id} 
                         postId={postData.id} 
                         token={token}
                         />

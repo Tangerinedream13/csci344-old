@@ -7,6 +7,7 @@ import { postDataToServer, deleteDataFromServer } from "../server-requests"
     // 2. Create / delete bookmarks
 
 export default function Bookmark({ token, bookmarkId, postId }) {
+    console.log("BookmarkID", bookmarkId)
     const [stateBookmarkId, setStateBookmarkId] = useState(bookmarkId);
 
     async function createBookmark() {
@@ -25,7 +26,7 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     async function deleteBookmark() {
         const responseData = await deleteDataFromServer(
             token, 
-            "/api/bookmarks/", + stateBookmarkId
+            "/api/bookmarks/" + stateBookmarkId
         );
         console.log(responseData);
         setStateBookmarkId(null);
