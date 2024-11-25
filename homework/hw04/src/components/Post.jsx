@@ -3,6 +3,7 @@ import React from "react";
 import Bookmark from "./Bookmark.jsx";
 import Like from "./Like.jsx";
 
+
 // Job:
 // 1. Create a tasteful representation of the post 
 // using data passed in from the parent.
@@ -33,7 +34,10 @@ export default function Post({ postData, token }) {
                 <div className="flex justify-between text-2xl mb-3">
                     <div className="flex gap-2">
                         {/* Like Button */}
-                        <Like likeId={postData.current_user_like_id} />
+                        <Like likeId={postData.current_user_like_id} 
+                        postId={postData.id} 
+                        token={token}
+                         />
 
                         {/* Miscellaneous Buttons */}
                         <button><i className="far fa-comment"></i></button>

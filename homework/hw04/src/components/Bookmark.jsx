@@ -36,10 +36,17 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     if (stateBookmarkId) {
         return (
             <button 
+                role="switch"
                 aria-label="Unbookmark This Post" 
-                ariaChecked="true" 
-                ariaRole="toggle" 
+                aria-checked="true"
+                tabIndex="0"
                 onClick={deleteBookmark}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault(); 
+                        deleteBookmark();
+                    }
+                }}
             >
                 <i className="fas fa-bookmark"></i>
             </button>
@@ -47,10 +54,17 @@ export default function Bookmark({ token, bookmarkId, postId }) {
     } else {
         return (
             <button 
-                ariaLabel="Bookmark This Post" 
-                ariaChecked="false" 
-                ariaRole="toggle" 
+                role="switch"
+                aria-label="Bookmark This Post" 
+                aria-checked="false" 
+                tabIndex="0"
                 onClick={createBookmark}
+                onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault(); 
+                        deleteBookmark();
+                    }
+                }}
             >
                 <i className="far fa-bookmark"></i>
             </button>

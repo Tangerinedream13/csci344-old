@@ -1,62 +1,54 @@
-// import React from "react"
-
-// export default function Like({ likeId }) {
-//     console.log(likeId);
-//         if (likeId) {
-//             return (
-//                 <button>
-//                     <i className="fas text-red-700 fa-heart"></i>
-//                 </button>
-//             );
-//         } else {
-//             return (
-//                  <button>
-//                     <i className="far fa-heart"></i>
-//                 </button>
-//             );
-//         }
-//     }
-
-import React, { useState } from "react";
-
-export default function LikeButton({ token, postId, initialLikeId }) {
-    const [likeId, setLikeId] = useState(initialLikeId);
-
-    async function handleLike() {
-        try {
-            const response = await fetch(`/api/posts/${postId}/likes`, {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
-            });
-            const data = await response.json();
-            setLikeId(data.id); // Store the like ID to indicate the post is liked
-        } catch (error) {
-            console.error("Error liking the post:", error);
+import React, {useState} from "react"; 
+import { postDataToServer, deleteDataFromServer } from "../server-requests"
+export default function Like({ token,likeId, postId }) {
+    console.log(likeId);
+        const [stateLikeId, setStateLikeId] = useState(likeId);
+        async function createLike() {
+            const sendData = {
+                "post_id": postId,
+            }
+            console.log(sendData);
+            console.log ("Creating Like");
+            const responseData = await postDataToServer(token,"/api/likes/", sendData);
+            console.log (responseData);
+            setStateLikeId(responseData.id);
+        }
+            async function deleteLike() {
+                const url= '/api/likes/'+stateLikeId;
+                console.log("Deleting Like");   
+                const responseData = await deleteDataFromServer(token,url);
+                console.log(responseData);
+                setStateLikeId(null);
+        }
+        console.log(stateLikeId);
+        if (stateLikeId) {
+            return (
+                <button
+                    onClick={deleteLike}
+                    role="switch"
+                    aria-label="Unlike this post"
+                    aria-checked="true"
+                >
+                    <i className="fas text-red-700 fa-heart"></i>
+                </button>
+            );
+        } else {
+            return (
+                <button
+                    onClick={createLike}
+                    role="switch"
+                    aria-label="Like this post"
+                    aria-checked="false"
+                    tabIndex="0" 
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault(); // Prevent scrolling on Space key
+                            createBookmark();
+                        }
+                    }}
+                >
+                    <i className="far fa-heart"></i>
+                </button>
+            );
         }
     }
-
-    async function handleUnlike() {
-        try {
-            await fetch(`/api/posts/${postId}/likes/${likeId}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            setLikeId(null); // Clear the like ID to indicate the post is unliked
-        } catch (error) {
-            console.error("Error unliking the post:", error);
-        }
-    }
-
-    return (
-        <button onClick={likeId ? handleUnlike : handleLike} aria-label={likeId ? "Unlike" : "Like"}>
-            <i className={likeId ? "fas fa-heart text-red-700" : "far fa-heart"}></i>
-        </button>
-    );
-}
-
-    

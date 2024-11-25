@@ -1,54 +1,23 @@
-// import React from "react";
-
-// export default function Profile({ token }) {
-//     return (
-//         <header className="flex gap-4 items-center">
-//             <p>Profile Goes Here. Fetch data from /api/profile/ endpoint.</p>
-//         </header>
-//     );
-// }
-
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import { getDataFromServer } from "../server-requests";
 
 export default function Profile({ token }) {
     const [profile, setProfile] = useState(null);
-    const [loading, setLoading] = useState(true);
 
+    async function getProfile() {
+        const data = await getDataFromServer(token, "/api/profile");
+        setProfile(data); // state variable setters always redraw the screen
+    }
+    // useEffect is a bult-in function designed to handle "side effects" when the page first loads
     useEffect(() => {
-        async function fetchProfile() {
-            const response = await fetch("/api/profile", {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            const data = await response.json();
-            setProfile(data);
-            setLoading(false);
-        }
-        fetchProfile();
-    }, [token]);
-
-    if (loading) return <p>Loading profile...</p>;
-
-    return (
-        <aside className="flex gap-4 items-center p-4 border rounded bg-white">
-            {profile ? (
-                <>
-                    <div className="w-16 h-16 rounded-full overflow-hidden">
-                        <img
-                            src={profile.avatarUrl}
-                            alt={`${profile.username}'s avatar`}
-                            className="w-full h-full object-cover"
-                        />
-                    </div>
-                    <div>
-                        <h2 className="text-lg font-semibold">{profile.username}</h2>
-                        <p className="text-sm text-gray-600">{profile.bio}</p>
-                    </div>
-                </>
-            ) : (
-                <p>No profile data available.</p>
-            )}
-        </aside>
+        getProfile();
+    }, []);
+    return (profile &&
+        <header className="flex gap-4 items-center">
+            <img src={profile.thumb_url} alt="Profile Picture" className="w-16 rounded-full" />
+            <h2 className="font-Comfortaa font-bold text-2x1">{profile.username}</h2>
+        
+        </header>
     );
+    
 }
