@@ -3,7 +3,7 @@ import React from "react";
 import Bookmark from "./Bookmark.jsx";
 import Like from "./Like.jsx";
 
-
+// Comment comment  
 // Job:
 // 1. Create a tasteful representation of the post 
 // using data passed in from the parent.
