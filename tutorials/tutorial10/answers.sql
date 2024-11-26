@@ -34,7 +34,7 @@ FROM posts;
 -- Exercise 7: Aggregating data
 SELECT 
     user_id,
-    COUNT(*) AS comment_count
+    COUNT(*) comment_count
 FROM 
     comments
 GROUP BY 
@@ -103,26 +103,24 @@ INSERT INTO comments (text, user_id, post_id)
 VALUES('Great photo!', 5, 3, now());
 
 
-
-
-
 -- Exercise 12: Deleting records
-DELETE FROM table_name
-WHERE condition;
+DELETE FROM bookmarks
+WHERE user_id = 26 and post_id = 219;
 
+DELETE FROM bookmarks
+WHERE user_id = 26 and post_id = 220;
+
+DELETE FROM bookmarks
+WHERE user_id = 26 and post_id = 221;
 -- specific example:
 DELETE FROM comments
 WHERE id = 1;
 
 
-
 -- Exercise 13: Updating records
-UPDATE table_name
-SET column1 = value1,
-    column2 = value2,
-    ...
-WHERE condition;
-
+UPDATE users
+SET email = 'knick2022@gmail.com'
+WHERE user_id = 26;
 -- specific example:
 UPDATE posts
 SET caption = 'This is my dog' 
@@ -131,3 +129,17 @@ WHERE id = 3;
 
 
 -- Exercise 14: More Querying Practice (Optional)
+-- Uses a subquery
+-- Write a query that displays the id and caption 
+-- of every blog post that Nicholas has published, 
+-- along with a count of how many comments each post has.
+SELECT posts.id, 
+       posts.caption, 
+       (SELECT COUNT(*) 
+        FROM comments 
+        WHERE comments.post_id = posts.id)
+FROM posts
+WHERE posts.user_id = 26
+ORDER BY (SELECT COUNT(*) 
+          FROM comments 
+          WHERE comments.post_id = posts.id);
